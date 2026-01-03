@@ -54,7 +54,7 @@ ${linkDrive.join('\n') || 'No se encontraron links.'}
     setLoadingCatalogo(true);
     setResponseCatalogo('');
     try {
-      const res = await fetch('https://caradvice.com.ar/sync/manual', {
+      const res = await fetch('https://api-caradvice.duckdns.org/sync/manual', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
