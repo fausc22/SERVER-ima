@@ -22,7 +22,7 @@ export default function Home() {
     setLoading(true);
     setResponse('');
     try {
-      const res = await fetch('https://distri-api.duckdns.org/ima/generar-reporte');
+      const res = await fetch('https://api.caradvice.com.ar/api/stock/upload');
       const json = await res.json();
 
       const { success, message, data } = json;
@@ -54,7 +54,7 @@ ${linkDrive.join('\n') || 'No se encontraron links.'}
     setLoadingCatalogo(true);
     setResponseCatalogo('');
     try {
-      const res = await fetch('https://api-caradvice.duckdns.org/sync/manual', {
+      const res = await fetch('https://api.caradvice.com.ar/sync/manual', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
