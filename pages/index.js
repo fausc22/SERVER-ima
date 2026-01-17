@@ -30,21 +30,17 @@ export default function Home() {
       });
       const json = await res.json();
 
-      const { success, message, data } = json;
-      const output = data?.output || '';
-      const linkDrive = output.match(/https:\/\/docs\.google\.com\/spreadsheets\/[^\s]+/g) || [];
+      const { success, message, excel, googleSheets } = json;
+      const recordCount = excel?.recordCount || 0;
+      const linkDrive = googleSheets?.url || '';
 
       const legible = `
 ✅ ${message}
 
-📝 ${data?.message || ''}
+📊 Registros exportados: ${recordCount}
 
-📄 Resultados:
-------------------------------
-${output.trim()}
-
-🔗 Links útiles:
-${linkDrive.join('\n') || 'No se encontraron links.'}
+🔗 Link de Google Sheets:
+${linkDrive || 'No se encontró el link.'}
       `;
 
       setResponse(legible.trim());
