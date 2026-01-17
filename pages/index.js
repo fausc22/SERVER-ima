@@ -22,7 +22,12 @@ export default function Home() {
     setLoading(true);
     setResponse('');
     try {
-      const res = await fetch('https://api.caradvice.com.ar/api/stock/upload');
+      const res = await fetch('https://api.caradvice.com.ar/api/stock/upload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       const json = await res.json();
 
       const { success, message, data } = json;
